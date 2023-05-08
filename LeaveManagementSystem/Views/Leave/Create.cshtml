@@ -1,0 +1,56 @@
+﻿
+@model LeaveManagementSystem.Models.Leave
+
+
+
+@{
+    var Employee = ViewData["Employee"] as IEnumerable<SelectListItem>;
+
+}
+
+
+<h1>Create Leave Application</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="EmployeeId" class="control-label"></label>
+        <select asp-for=EmployeeId asp-items=Employee class="form-control"></select>
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div>
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+    </div>
+    <div>
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+    </div>
+    <div class="form-group">
+        <label for="LeaveDescription">leave Description:</label>
+
+        <div id="leaveDescription">
+        
+                <input type="text" id="leaveDescription" name="leaveDescription" required>
+        </div>
+    </div>
+
+    
+    
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script>
+        Office.initialize = function () {
+            var editor = new OfficeRibbon.Editor(document.getElementById("leaveDescription"), {
+                onContentChanged: function (content) {
+                    document.getElementById("leaveDescription").value = content;
+                }
+            });
+        };
+    </script>
+}

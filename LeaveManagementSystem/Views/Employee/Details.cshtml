@@ -1,0 +1,18 @@
+﻿@model LeaveManagementSystem.Models.ViewModel.EmployeeViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<tr>
+<th>@Html.DisplayFor(modelItem => Model.Address)</th></br>
+    <th>@Html.DisplayFor(modelItem => Model.Name)</th></br>
+<th>@Html.DisplayFor(modelItem => Model.ContactNumber)</th</br>
+<th>@Html.DisplayFor(modelItem => Model.DateOfJoin)</th</br>
+<th>@Html.DisplayFor(modelItem => Model.DepartmentName)</th></br>
+<th>@Html.DisplayFor(modelItem => Model.DesignationName)</th</br>
+</tr>
+  
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
