@@ -38,8 +38,11 @@
                 @*<td>@Html.DisplayFor(modelItem => item.DateOfJoin)</td>
                 <td>@Html.DisplayFor(modelItem => item.DepartmentName)</td>
                 <td>@Html.DisplayFor(modelItem => item.DesignationName)</td>*@
-                <td><a class="btn btn-primary" href="@Url.Action("Create", "Leave")">Apply Leave</a></td>
-                <td>
+                @*<td><a class="btn btn-primary" href="@Url.Action("Create", "Leave")">Apply Leave</a></td>
+                <td>*@
+                <td class="text-center">
+                    <a asp-controller="Leave" asp-action="Create" class="btn btn-primary" asp-route-Id="@item.Id">Apply Leave</a>
+                </td>
                 <td class="text-center">
                     <a asp-action="Edit" class="btn btn-primary" asp-route-Id="@item.Id">Edit</a>
                 </td>

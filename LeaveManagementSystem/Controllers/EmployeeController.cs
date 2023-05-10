@@ -101,9 +101,9 @@ namespace LeaveManagementSystem.Controllers
                 Value = designation.Id.ToString()
             }).ToList();
             ViewData["designations"] = designations;
-            
-           
-            var data = _dbContext.Employees.Where(x=>x.Id ==id);
+
+
+            var data = _dbContext.Employees.Where(x => x.Id == id);
             EmployeeUpdateViewModel? ujjwal = _mapper.ProjectTo<EmployeeUpdateViewModel>(data).FirstOrDefault();
             if (ujjwal == null)
                 return RedirectToAction("Index");
@@ -111,7 +111,7 @@ namespace LeaveManagementSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(EmployeeUpdateViewModel employee) 
+        public IActionResult Edit(EmployeeUpdateViewModel employee)
         {
             Employee data = _dbContext.Employees.Where(x => x.Id == employee.Id).First();
             _mapper.Map(employee, data);
@@ -146,20 +146,16 @@ namespace LeaveManagementSystem.Controllers
             if (id == null)
                 return RedirectToAction("Index");
 
-            IQueryable<Employee> data = _dbContext.Employees.Where(x=>x.Id ==id);
-            
-           
-                EmployeeViewModel? ujjwal =  _mapper.ProjectTo<EmployeeViewModel>(data).FirstOrDefault();
+            IQueryable<Employee> data = _dbContext.Employees.Where(x => x.Id == id);
+
+
+            var ujjwal = _mapper.ProjectTo<EmployeeDetailsViewModel>(data).FirstOrDefault();
             if (ujjwal == null)
                 return RedirectToAction("Index");
-           
-           return View(ujjwal);
+
+            return View(ujjwal);
         }
-        //[HttpPost]
-        //public IActionResult Details(Employee employee)
-        //{
-        //    return View(employee);
-        //}
+
 
 
     }

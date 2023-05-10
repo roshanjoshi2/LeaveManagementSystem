@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using LeaveManagementSystem.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -24,35 +25,50 @@ namespace LeaveManagementSystem.Controllers
             return View();
         }
 
-        // GET: LeaveController/Create
-        public ActionResult Create()
+        public IActionResult Create(int id)
         {
-            return View();
+            var data = _dbContext.Employees.Where(x => x.Id == id).FirstOrDefault();
+            return View(data);
         }
-
-        // POST: LeaveController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Leave leave)
         {
-            var Employee = _dbContext.Employees.Select(Employee => new SelectListItem
-            {
-                Text = Employee.Name,
-                Value = Employee.Id.ToString()
-            }).ToList();
+            _dbContext.Add(leave);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
 
-            ViewData["Employee"] = Employee;
-
-            try
-            {
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
+
+        //// GET: LeaveController/Create
+        //public ActionResult Create(int? id)
+        //{
+        //    var data  = _dbContext.Employees.Find(id);
+        //    return View(data);
+        //}
+
+        //// POST: LeaveController/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(IFormCollection collection)
+        //{
+        //    var Employee = _dbContext.Employees.Select(Employee => new SelectListItem
+        //    {
+        //        Text = Employee.Name,
+        //        Value = Employee.Id.ToString()
+        //    }).ToList();
+
+        //    ViewData["Employee"] = Employee;
+
+        //    try
+        //    {
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: LeaveController/Edit/5
         public ActionResult Edit(int id)

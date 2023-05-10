@@ -47,5 +47,21 @@ namespace LeaveManagementSystem.Models.ViewModel
         public int DesignationId { get; set; }
     }
 
+    public class EmployeeDetailsViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
+        public string Addresss { get; set; }
+        public string ContactNumber { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime DateOfJoin { get; set; }
+        public string DepartmentName { get; set; }
+
+        public string DesignationName { get; set; }
+
+
+
+
+    }
 }
