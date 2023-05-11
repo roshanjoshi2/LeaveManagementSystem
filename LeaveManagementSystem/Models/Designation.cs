@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace LeaveManagementSystem.Models
 {
@@ -11,6 +12,8 @@ namespace LeaveManagementSystem.Models
         [Required]
         [StringLength(50)]
         public string Description { get; set; }
+       
         public ICollection<Employee> Employees { get; set; }
-    }
+		public bool Status { get; set; }
+	}
 }

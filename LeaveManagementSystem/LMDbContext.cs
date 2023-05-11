@@ -13,12 +13,16 @@ namespace LeaveManagementSystem
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            //base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Department>()
-            
-        
-            //.OnDelete(DeleteBehavior.Restrict);
+            var cascadeFKs = modelBuilder.Model.GetEntityTypes()
+                 .SelectMany(t => t.GetForeignKeys())
+                 .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+            foreach (var fk in cascadeFKs)
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+
+            base.OnModelCreating(modelBuilder);
 
 
         }

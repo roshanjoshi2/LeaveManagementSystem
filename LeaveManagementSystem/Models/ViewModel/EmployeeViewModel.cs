@@ -21,7 +21,8 @@ namespace LeaveManagementSystem.Models.ViewModel
         public DateTime DateOfJoin { get; set; }
         public string DepartmentName { get; set; }
         public string DesignationName { get; set; }
-    }
+		public bool Status { get; set; }
+	}
 
 
 
@@ -33,8 +34,9 @@ namespace LeaveManagementSystem.Models.ViewModel
 
         public string DesignationName { get; set; }
         public string ContactNumber { get; set; }
+		public bool Status { get; set; }
 
-    }
+	}
     public class EmployeeUpdateViewModel
     {
         public int Id { get; set; }
@@ -45,7 +47,8 @@ namespace LeaveManagementSystem.Models.ViewModel
         public string Email { get; set; }
 
         public int DesignationId { get; set; }
-    }
+		public bool Status { get; set; }
+	}
 
     public class EmployeeDetailsViewModel
     {
@@ -59,9 +62,10 @@ namespace LeaveManagementSystem.Models.ViewModel
         public string DepartmentName { get; set; }
 
         public string DesignationName { get; set; }
+		public bool Status { get; set; }
 
 
 
 
-    }
+	}
 }

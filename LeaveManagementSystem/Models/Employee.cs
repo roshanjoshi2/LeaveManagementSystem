@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -36,14 +37,19 @@ namespace LeaveManagementSystem.Models
      
         public string? Email { get; set; }
 
-
+        
         public Department Department{ get; set; }
         [ForeignKey(nameof(Department))]
+       
         public int DepartmentId { get; set; }
 
-
+        
         public Designation Designation { get; set; }
         [ForeignKey(nameof(Designation))]
+       
+
         public int DesignationId { get; set; }
-    }
+
+		public bool Status { get; set; }
+	}
 }

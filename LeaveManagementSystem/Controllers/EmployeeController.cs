@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System.Diagnostics;
-
+using System.Runtime.CompilerServices;
 
 namespace LeaveManagementSystem.Controllers
 {
@@ -73,6 +73,7 @@ namespace LeaveManagementSystem.Controllers
         {
 
 
+            employee.Status = true;
 
             _dbContext.Add(employee);
             _dbContext.SaveChanges();
@@ -102,8 +103,8 @@ namespace LeaveManagementSystem.Controllers
             }).ToList();
             ViewData["designations"] = designations;
 
-
-            var data = _dbContext.Employees.Where(x => x.Id == id);
+            var hero = _dbContext.Employees.Where(y => y.Status == true);
+            var data = hero.Where(x => x.Id == id);
             EmployeeUpdateViewModel? ujjwal = _mapper.ProjectTo<EmployeeUpdateViewModel>(data).FirstOrDefault();
             if (ujjwal == null)
                 return RedirectToAction("Index");
@@ -113,6 +114,8 @@ namespace LeaveManagementSystem.Controllers
         [HttpPost]
         public IActionResult Edit(EmployeeUpdateViewModel employee)
         {
+            //var data = _dbContext.Employees.AsNoTracking().FirstOrDefaultAsync();
+            employee.Status = true;
             Employee data = _dbContext.Employees.Where(x => x.Id == employee.Id).First();
             _mapper.Map(employee, data);
             _dbContext.Update(data);
@@ -134,9 +137,14 @@ namespace LeaveManagementSystem.Controllers
 
         }
         [HttpPost]
-        public IActionResult Delete(Employee employee)
+        public IActionResult Delete(int Id)
         {
-            _dbContext.Remove(employee);
+            var data = _dbContext.Employees.Find(Id);
+            if (data == null)
+                return RedirectToAction("Index");
+
+            data.Status = false;
+            _dbContext.Employees.Update(data);  
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }

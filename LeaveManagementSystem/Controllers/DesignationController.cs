@@ -12,7 +12,7 @@ namespace LeaveManagementSystem.Controllers
         public DesignationController(LMDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper = mapper;   
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -53,21 +53,35 @@ namespace LeaveManagementSystem.Controllers
 
         public IActionResult Delete(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return RedirectToAction("Index");
             var data = _dbContext.Designations.Find(id);
-            if(data == null)
+            if (data == null)
                 return RedirectToAction("Index");
             return View(data);
         }
         [HttpPost]
         public IActionResult Delete(Designation designation)
         {
-            _dbContext.Remove(designation);
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");   
+
+            try
+            {
+                _dbContext.Remove(designation);
+                _dbContext.SaveChanges();
+                return RedirectToAction("Index");
+
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index");
+            }
+
+           
+
         }
+    }
 
             
-    }
+    
 }

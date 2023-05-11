@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 
 namespace LeaveManagementSystem.Models
@@ -13,6 +14,8 @@ namespace LeaveManagementSystem.Models
         [StringLength(50)]
         public string Description { get; set; }
         //used  to make reference table.
+        
         public List<Employee>? Employees { get; set; }
-    }
+		public bool Status { get; set; }
+	}
 }

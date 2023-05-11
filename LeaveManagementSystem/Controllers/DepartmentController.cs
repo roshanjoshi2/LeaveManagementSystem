@@ -92,9 +92,17 @@ namespace LeaveManagementSystem.Controllers
         [HttpPost]
         public IActionResult Delete(Department department)
         {
-            _dbContext.Remove(department);
-            _dbContext.SaveChanges();
-            return RedirectToAction("index");
+            try
+            {
+                _dbContext.Remove(department);
+                _dbContext.SaveChanges();
+                return RedirectToAction("index");
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Index");
+            }
+          
         }
 
         public IActionResult Details(int? id)

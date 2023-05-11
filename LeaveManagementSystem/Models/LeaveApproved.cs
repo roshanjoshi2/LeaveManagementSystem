@@ -17,5 +17,6 @@ namespace LeaveManagementSystem.Models
         public int LeaveId { get; set; }
         [Required]
         public LeaveType LeaveType{ get; set; }
-    }
+		public bool Status { get; set; }
+	}
 }
