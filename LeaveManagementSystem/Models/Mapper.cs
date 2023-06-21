@@ -8,7 +8,7 @@ namespace LeaveManagementSystem.Models
         public Mapper()
         {
             CreateMap<Employee, EmployeeViewModel>()
-               .ForMember(x => x.DepartmentName, a => a.MapFrom(x => x.Department.Name))
+               .ForMember(x => x.DepartmentName, a => a.MapFrom(x => x.Department.Title))
                .ForMember(y=>y.DesignationName, z => z.MapFrom(y => y.Designation.Name));
                 
                 
