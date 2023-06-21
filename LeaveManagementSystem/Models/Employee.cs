@@ -13,7 +13,8 @@ namespace LeaveManagementSystem.Models
         public string  Name { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(100)] 
+
         public string Address { get; set; }
 
         [Required]
