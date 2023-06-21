@@ -7,7 +7,7 @@ namespace LeaveManagementSystem.Models
     public class Employee
     {
         [Key]
-        public int Id{ get; set; }
+        public  int Id{ get; set; }
         [Required(ErrorMessage ="Enter your name.")]
         [StringLength(50)]
         public string  Name { get; set; }
