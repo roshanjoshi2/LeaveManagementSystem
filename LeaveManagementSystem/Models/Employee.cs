@@ -8,7 +8,7 @@ namespace LeaveManagementSystem.Models
     {
         [Key]
         public int Id{ get; set; }
-        [Required]
+        [Required(ErrorMessage ="Enter your name.")]
         [StringLength(50)]
         public string  Name { get; set; }
 
@@ -34,7 +34,7 @@ namespace LeaveManagementSystem.Models
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
-     
+        
         public string? Email { get; set; }
 
 
