@@ -7,13 +7,17 @@ namespace LeaveManagementSystem.Models
     public class Employee
     {
         [Key]
-        public int Id{ get; set; }
-        [Required]
+        public  int Id{ get; set; }
+        [Required(ErrorMessage ="Enter your name.")]
         [StringLength(50)]
         public string  Name { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required   ]
+        [StringLength(100)] 
+
+
+
+
         public string Address { get; set; }
 
         [Required]
@@ -33,12 +37,12 @@ namespace LeaveManagementSystem.Models
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
-     
+        
         public string? Email { get; set; }
 
 
         public Department Department{ get; set; }
-        [ForeignKey(nameof(Department))]
+        [ForeignKey(nameof(Department)) ]
         public int DepartmentId { get; set; }
 
 
