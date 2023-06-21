@@ -16,7 +16,7 @@ namespace LeaveManagementSystem.Controllers
         private readonly IMapper _mapper;
         public EmployeeController(LMDbContext dbContext, IMapper mapper)
         {
-            _dbContext = dbContext;
+            _dbContext = dbContext ;
             _mapper = mapper;
         }
 
