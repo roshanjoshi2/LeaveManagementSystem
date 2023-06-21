@@ -38,7 +38,7 @@ namespace LeaveManagementSystem.Models
 
 
         public Department Department{ get; set; }
-        [ForeignKey(nameof(Department))]
+        [ForeignKey(nameof(Department)) ]
         public int DepartmentId { get; set; }
 
 
